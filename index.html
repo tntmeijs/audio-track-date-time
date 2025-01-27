@@ -1,3 +1,5 @@
+<!-- Colour palette: https://colorhunt.co/palette/f2efe79acbd048a6a72973b2 -->
+
 <!doctype html>
 <html>
 
@@ -5,9 +7,41 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  <style type="text/tailwindcss">
+    @theme {
+      --color-background: #F2EFE7;
+      --color-background-alt: #9ACBD0;
+      --color-primary: #2973B2;
+      --color-secondary: #48A6A7;
+    }
+  </style>
 </head>
 
-<body>
+<body class="w-screen h-screen">
+  <!-- Main app wrapper -->
+  <div class="h-full flex justify-center items-center bg-primary">
+
+    <!-- File upload modal -->
+    <div id="upload-modal"
+      class="flex flex-col items-center border-dashed border-background rounded-xl border-5 px-40 py-25">
+      <p class="capitalize text-background mb-4 text-4xl">drag & drop to upload a file</p>
+      <p class="text-background uppercase text-4xl font-bold">or</p>
+      <button id="select-file-btn"
+        class="capitalize bg-background text-primary text-4xl px-6 py-3 rounded-lg cursor-pointer mt-4">browse
+        file</button>
+    </div>
+
+    <div id="audio-player" class="flex flex-col items-center px-40 py-25">
+      <input id="audio-player-date-time-local" type="datetime-local" />
+
+      <div>
+        <button id="audio-player-play-pause-btn" class="cursor-pointer">▶️</button>
+        <progress id="audio-player-timeline" value="0" max="100"></progress>
+      </div>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
 </body>
 
 </html>
